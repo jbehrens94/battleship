@@ -1,0 +1,28 @@
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: 0 0 * * *
+
+jobs:
+  ci:
+    runs-on: macos-26
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: SwiftLint
+        uses: cirruslabs/swiftlint-action@v1
+        with:
+          version: latest
+      - name: Test
+        run: xcodebuild test -scheme Battleship -enableCodeCoverage YES -resultBundlePath ./build.xcresult -destination "platform=macOS,arch=arm64,variant=macos" -skipPackagePluginValidation
+      - name: Convert to Sonarcube generic
+        run: ./scripts/xccov-to-sonarqube-generic.sh ./build.xcresult > coverage.xml
+      - name: Push to SonarQube
+        uses: SonarSource/sonarqube-scan-action@v6.0.0
+        with:
+          projectBaseDir: .
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
