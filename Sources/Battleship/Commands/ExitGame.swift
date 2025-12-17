@@ -7,8 +7,14 @@ extension Commands {
             abstract: "Exit a new game.",
         )
 
+        var output: OutputHandling = ConsoleOutput()
+
         func run() throws {
-            print("End!")
+            output.write("🕹️ Battleship game ending. Goodbye!")
         }
     }
+}
+
+extension Commands.ExitGame {
+    enum CodingKeys: CodingKey {}
 }

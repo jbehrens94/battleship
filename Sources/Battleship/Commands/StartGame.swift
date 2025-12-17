@@ -8,12 +8,14 @@ extension Commands {
             abstract: "Start a new game.",
         )
 
-        enum CodingKeys: CodingKey {}
-
         var output: OutputHandling = ConsoleOutput()
 
         func run() throws {
             output.write("🕹️ Battleship game starting")
         }
     }
+}
+
+extension Commands.StartGame {
+    enum CodingKeys: CodingKey {}
 }
