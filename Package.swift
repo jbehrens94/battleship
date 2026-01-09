@@ -54,6 +54,16 @@ let package = Package(
                 .plugin(name: "SwiftLintBuildToolPlugin", package: "SwiftLintPlugins")
             ]
         ),
+
+        .testTarget(
+            name: "AcceptanceTests",
+            dependencies: [
+                "Battleship"
+            ],
+            plugins: [
+                .plugin(name: "SwiftLintBuildToolPlugin", package: "SwiftLintPlugins")
+            ]
+        ),
     ],
     swiftLanguageModes: [.v5]
 )
