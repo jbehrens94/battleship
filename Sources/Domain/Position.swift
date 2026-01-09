@@ -1,6 +1,11 @@
 import Foundation
 
 public struct Position {
-    let row: Int
-    let column: Int
+    public let row: Int
+    public let column: Int
+
+    public init(row: Int, column: Int) {
+        self.row = row
+        self.column = column
+    }
 }

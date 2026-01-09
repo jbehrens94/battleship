@@ -1,7 +1,7 @@
 import Foundation
 
 public struct Board {
-    let size = Board.Size(width: 10, height: 10)
+    public let size = Board.Size(width: 10, height: 10)
     private let grid: [[Cell]]
 
     public init() {
@@ -19,7 +19,7 @@ public struct Board {
     }
 
     public struct Size {
-        let width: Int
-        let height: Int
+        public let width: Int
+        public let height: Int
     }
 }

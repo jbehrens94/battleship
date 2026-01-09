@@ -10,7 +10,7 @@ public struct Cell {
     public enum State {
         case water
 
-        var emoji: String {
+        public var emoji: String {
             switch self {
             case .water: "🌊"
             }
