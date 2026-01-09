@@ -7,17 +7,26 @@ import Testing
 
 struct StartGameTests {
     @Test
-    func `Given I start a new game, rows are initialized with the correct emoji`() {
+    func `given I start a new game, rows and columns are initialized correctly`() {
         let board = Board()
         let presenter = TextualBoardPresenter()
 
         let actual = presenter
             .present(board: board)
-            .split(separator: "\n")
-            .map(String.init)
 
-        let expected = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"]
-            .map { "\($0) \(String(repeating: "🌊 ", count: 10))" }
+        let expected = """
+          1️⃣ 2️⃣ 3️⃣ 4️⃣ 5️⃣ 6️⃣ 7️⃣ 8️⃣ 9️⃣ 🔟
+        A 🌊 🌊 🌊 🌊 🌊 🌊 🌊 🌊 🌊 🌊
+        B 🌊 🌊 🌊 🌊 🌊 🌊 🌊 🌊 🌊 🌊
+        C 🌊 🌊 🌊 🌊 🌊 🌊 🌊 🌊 🌊 🌊
+        D 🌊 🌊 🌊 🌊 🌊 🌊 🌊 🌊 🌊 🌊
+        E 🌊 🌊 🌊 🌊 🌊 🌊 🌊 🌊 🌊 🌊
+        F 🌊 🌊 🌊 🌊 🌊 🌊 🌊 🌊 🌊 🌊
+        G 🌊 🌊 🌊 🌊 🌊 🌊 🌊 🌊 🌊 🌊
+        H 🌊 🌊 🌊 🌊 🌊 🌊 🌊 🌊 🌊 🌊
+        I 🌊 🌊 🌊 🌊 🌊 🌊 🌊 🌊 🌊 🌊
+        J 🌊 🌊 🌊 🌊 🌊 🌊 🌊 🌊 🌊 🌊
+        """
 
         #expect(actual == expected)
     }
