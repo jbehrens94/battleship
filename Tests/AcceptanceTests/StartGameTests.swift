@@ -12,7 +12,7 @@ struct StartGameTests {
         let presenter = TextualBoardPresenter()
 
         let actual = presenter.present(board: board)
-        let expected = String(repeating: "🌊", count: 100)
+        let expected = String(repeating: "🌊🌊🌊🌊🌊🌊🌊🌊🌊🌊\n", count: 10)
 
         #expect(actual == expected)
     }
