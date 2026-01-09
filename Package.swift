@@ -46,6 +46,15 @@ let package = Package(
 
         // Tests
         .testTarget(
+            name: "AcceptanceTests",
+            dependencies: [
+                "Battleship"
+            ],
+            plugins: [
+                .plugin(name: "SwiftLintBuildToolPlugin", package: "SwiftLintPlugins")
+            ]
+        ),
+        .testTarget(
             name: "IntegrationTests",
             dependencies: [
                 "Battleship"
@@ -54,9 +63,8 @@ let package = Package(
                 .plugin(name: "SwiftLintBuildToolPlugin", package: "SwiftLintPlugins")
             ]
         ),
-
         .testTarget(
-            name: "AcceptanceTests",
+            name: "UnitTests",
             dependencies: [
                 "Battleship"
             ],

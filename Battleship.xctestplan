@@ -1,0 +1,38 @@
+{
+  "configurations" : [
+    {
+      "id" : "DB5D90F1-18AE-492E-A4A0-DD83E2794504",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "IntegrationTests",
+        "name" : "IntegrationTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "AcceptanceTests",
+        "name" : "AcceptanceTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "UnitTests",
+        "name" : "UnitTests"
+      }
+    }
+  ],
+  "version" : 1
+}
