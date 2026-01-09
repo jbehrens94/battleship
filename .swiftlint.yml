@@ -16,6 +16,7 @@ opt_in_rules:
   - implicit_return
 disabled_rules:
   - nesting
+  - trailing_comma
 analyzer_rules:
    - unused_declaration
    - unused_import

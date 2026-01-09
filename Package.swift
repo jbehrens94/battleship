@@ -9,15 +9,34 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/apple/swift-argument-parser", from: "1.3.0"),
-
-        .package(url: "https://github.com/Quick/Nimble.git", from: "14.0.0"),
-        .package(url: "https://github.com/Quick/Quick.git", from: "7.6.2"),
+        
         .package(url: "https://github.com/SimplyDanny/SwiftLintPlugins", from: "0.58.2"),
     ],
     targets: [
+        // Hexagonal architecture
+        .target(name: "Domain"),
+        .target(
+            name: "Application",
+            dependencies: [
+                "Domain"
+            ]
+        ),
+        .target(
+            name: "Infrastructure",
+            dependencies: [
+                "Application",
+                "Domain"
+            ]
+        ),
+
+        // Executables
         .executableTarget(
             name: "Battleship",
             dependencies: [
+                "Application",
+                "Domain",
+                "Infrastructure",
+
                 .product(name: "ArgumentParser", package: "swift-argument-parser"),
             ],
             plugins: [
@@ -25,13 +44,11 @@ let package = Package(
             ]
         ),
 
+        // Tests
         .testTarget(
-            name: "BattleshipTests",
+            name: "IntegrationTests",
             dependencies: [
-                "Battleship",
-
-                "Quick",
-                "Nimble"
+                "Battleship"
             ],
             plugins: [
                 .plugin(name: "SwiftLintBuildToolPlugin", package: "SwiftLintPlugins")
