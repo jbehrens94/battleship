@@ -7,12 +7,17 @@ import Testing
 
 struct StartGameTests {
     @Test
-    func `Given I start a new game I should see 100 wave emoji`() {
+    func `Given I start a new game, rows are initialized with the correct emoji`() {
         let board = Board()
         let presenter = TextualBoardPresenter()
 
-        let actual = presenter.present(board: board)
-        let expected = String(repeating: "🌊🌊🌊🌊🌊🌊🌊🌊🌊🌊\n", count: 10)
+        let actual = presenter
+            .present(board: board)
+            .split(separator: "\n")
+            .map(String.init)
+
+        let expected = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"]
+            .map { "\($0) \(String(repeating: "🌊 ", count: 10))" }
 
         #expect(actual == expected)
     }
